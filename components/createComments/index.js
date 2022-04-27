@@ -43,7 +43,7 @@ export default function CreateComments(props) {
 
     try {
       const rep = await fetch(
-        "https://my-app-56mpx.ondigitalocean.app/api/comments",
+        `${process.env.NEXT_PUBLIC_URL_API}/api/comments`,
         requestOptions
       );
       const response = await rep.json();

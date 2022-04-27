@@ -23,7 +23,7 @@ export default function comment(props) {
 
   async function syncComments() {
     const com = await fetch(
-      `https://my-app-56mpx.ondigitalocean.app/api/comments/${props.data.id}?populate=*`
+      `${process.env.NEXT_PUBLIC_URL_API}/api/comments/${props.data.id}?populate=*`
     );
     const rep = await com.json();
 

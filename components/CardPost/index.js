@@ -36,7 +36,7 @@ export default function CardPost({ post }) {
         window.confirm("Êtes-vous sur de vouloir supprimer cette publication ?")
       ) {
         const rep = await fetch(
-          `https://my-app-56mpx.ondigitalocean.app/api/posts/${post.id}`,
+          `${process.env.NEXT_PUBLIC_URL_API}/api/posts/${post.id}`,
           requestOptions
         );
         const response = await rep.json();
@@ -84,7 +84,7 @@ export default function CardPost({ post }) {
                   component="img"
                   height="200"
                   image={
-                    "https://my-app-56mpx.ondigitalocean.app" +
+                    process.env.NEXT_PUBLIC_URL_API +
                     post.attributes.image.data.attributes.formats.small.url
                   }
                   alt={post.attributes.title}

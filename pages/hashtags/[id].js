@@ -26,12 +26,12 @@ export default function Hashtags({ hashtag, hashtagInfos }) {
 
 export async function getStaticProps({ params }) {
   const hashInfos = await fetch(
-    `https://my-app-56mpx.ondigitalocean.app/api/hashtags/${params.id}?populate=*`
+    `${process.env.NEXT_PUBLIC_URL_API}/api/hashtags/${params.id}?populate=*`
   );
   const hashtagInfos = await hashInfos.json();
 
   const hash = await fetch(
-    `https://my-app-56mpx.ondigitalocean.app/api/posts?sort[0]=id%3Adesc&filters[hashtags][id][$eq]=${params.id}&populate=*`
+    `${process.env.NEXT_PUBLIC_URL_API}/api/posts?sort[0]=id%3Adesc&filters[hashtags][id][$eq]=${params.id}&populate=*`
   );
   const hashtag = await hash.json();
 

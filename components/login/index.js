@@ -31,7 +31,7 @@ export default function Login(props) {
 
     try {
       const rep = await fetch(
-        "https://my-app-56mpx.ondigitalocean.app/api/auth/local",
+        `${process.env.NEXT_PUBLIC_URL_API}/api/auth/local`,
         requestOptions
       );
 

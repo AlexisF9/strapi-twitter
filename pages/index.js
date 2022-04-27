@@ -1,3 +1,4 @@
+import css from "../styles/Home.module.scss";
 import { Link } from "@mui/material";
 import { useEffect, useState } from "react";
 import CardPost from "../components/CardPost";
@@ -5,7 +6,7 @@ import CreatePost from "../components/createPost";
 import Login from "../components/login";
 import postsAPI from "../services/postsAPI";
 import CircularProgress from "@mui/material/CircularProgress";
-import css from "../styles/Home.module.scss";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export default function Home({ hashtag }) {
   const [user, setUser] = useState();
@@ -32,17 +33,33 @@ export default function Home({ hashtag }) {
     setIsLoading(false);
   };
 
-  // AJOUT POST APRES CREATION SANS RECHERGEMENT DE PAGE
+  // AJOUT POST APRES CREATION SANS RECHARGEMENT DE PAGE
   async function syncPosts() {
     setPosts(
       await (
         await fetch(
-          `https://my-app-56mpx.ondigitalocean.app/api/posts?sort[0]=id%3Adesc&populate=*`
+          `${process.env.NEXT_PUBLIC_URL_API}/api/posts?sort[0]=id%3Adesc&populate=*`
         )
       ).json()
     );
 
     setIsLoading(false);
+  }
+
+  async function getMorePosts() {
+    const res = await fetch(
+      `${
+        process.env.NEXT_PUBLIC_URL_API
+      }/api/posts?sort[0]=id%3Adesc&pagination[page]=${
+        posts.meta.pagination.page + 1
+      }&populate=*`
+    );
+    const rep = await res.json();
+    const newPosts = { ...posts };
+    rep.data.forEach((element) => {
+      newPosts.data.push(element);
+    });
+    setPosts(newPosts);
   }
 
   return (
@@ -83,9 +100,16 @@ export default function Home({ hashtag }) {
               <CircularProgress />
             </div>
           ) : (
-            posts.data.map((datas, index) => {
-              return <CardPost post={datas} key={index} />;
-            })
+            <InfiniteScroll
+              style={{ overflow: "inherit" }}
+              dataLength={posts.meta.pagination.pageCount}
+              next={getMorePosts}
+              hasMore={true}
+            >
+              {posts.data.map((datas, index) => {
+                return <CardPost post={datas} key={index} />;
+              })}
+            </InfiniteScroll>
           )}
         </div>
       )}
@@ -110,7 +134,7 @@ export default function Home({ hashtag }) {
 
 export async function getStaticProps() {
   const hash = await fetch(
-    `https://my-app-56mpx.ondigitalocean.app/api/hashtags?populate=*`
+    `${process.env.NEXT_PUBLIC_URL_API}/api/hashtags?populate=*`
   );
   const hashtag = await hash.json();
 

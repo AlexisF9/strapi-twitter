@@ -37,7 +37,7 @@ export default function Register() {
     if (password === verifPassword) {
       try {
         const rep = await fetch(
-          "https://my-app-56mpx.ondigitalocean.app/api/auth/local/register",
+          `${process.env.NEXT_PUBLIC_URL_API}/api/auth/local/register`,
           requestOptions
         );
 

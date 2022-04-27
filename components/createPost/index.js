@@ -79,7 +79,7 @@ export default function createPost(props) {
 
     try {
       const rep = await fetch(
-        "https://my-app-56mpx.ondigitalocean.app/api/posts?populate=*",
+        `${process.env.NEXT_PUBLIC_URL_API}/api/posts?populate=*`,
         requestOptions
       );
       const response = await rep.json();

@@ -1,7 +1,7 @@
 // FIND ALL POSTS
 function findAll() {
   return fetch(
-    `https://my-app-56mpx.ondigitalocean.app/api/posts?sort[0]=id%3Adesc&populate=*`,
+    `${process.env.NEXT_PUBLIC_URL_API}/api/posts?sort[0]=id%3Adesc&populate=*`,
     {
       method: "GET",
       headers: {
@@ -14,7 +14,7 @@ function findAll() {
 // FIND ONE POST
 function findOne(id) {
   return fetch(
-    `https://my-app-56mpx.ondigitalocean.app/api/posts/${id}?populate=*`,
+    `${process.env.NEXT_PUBLIC_URL_API}/api/posts/${id}?populate=*`,
     {
       method: "GET",
       headers: {

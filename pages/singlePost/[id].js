@@ -26,7 +26,7 @@ export default function singlePost({ post }) {
     setSinglePost(
       await (
         await fetch(
-          `https://my-app-56mpx.ondigitalocean.app/api/posts/${post.data.id}?populate=*`
+          `${process.env.NEXT_PUBLIC_URL_API}/api/posts/${post.data.id}?populate=*`
         )
       ).json()
     );
@@ -56,7 +56,7 @@ export default function singlePost({ post }) {
           {post.data.attributes.image.data && (
             <img
               src={
-                "https://my-app-56mpx.ondigitalocean.app" +
+                process.env.NEXT_PUBLIC_URL_API +
                 post.data.attributes.image.data.attributes.formats.small.url
               }
             />

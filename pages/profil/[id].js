@@ -22,8 +22,6 @@ export default function Profil({ userInfos, userPosts }) {
     setDateInscription(maDate.toLocaleDateString("fr"));
   }, []);
 
-  console.log(userInfos.description);
-
   return (
     <div className={css.profil}>
       <div>
@@ -77,12 +75,12 @@ export default function Profil({ userInfos, userPosts }) {
 
 export async function getStaticProps({ params }) {
   const user = await fetch(
-    `https://my-app-56mpx.ondigitalocean.app/api/users/${params.id}?populate=*`
+    `${process.env.NEXT_PUBLIC_URL_API}/api/users/${params.id}?populate=*`
   );
   const userInfos = await user.json();
 
   const userPost = await fetch(
-    `https://my-app-56mpx.ondigitalocean.app/api/posts?sort[0]=id%3Adesc&filters[users_permissions_user][id][$eq]=${params.id}&populate=*`
+    `${process.env.NEXT_PUBLIC_URL_API}/api/posts?sort[0]=id%3Adesc&filters[users_permissions_user][id][$eq]=${params.id}&populate=*`
   );
   const userPosts = await userPost.json();
 

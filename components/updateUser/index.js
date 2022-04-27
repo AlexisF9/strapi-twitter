@@ -43,7 +43,7 @@ export default function UpdateUser(props) {
 
     try {
       const rep = await fetch(
-        `https://my-app-56mpx.ondigitalocean.app/api/users/${user}`,
+        `${process.env.NEXT_PUBLIC_URL_API}/api/users/${user}`,
         requestOptions
       );
       const response = await rep.json();
