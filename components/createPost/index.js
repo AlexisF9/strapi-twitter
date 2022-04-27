@@ -36,20 +36,32 @@ export default function createPost(props) {
       formdata = new FormData();
       formdata.append("files.image", file);
 
-      formdata.append(
-        "data",
-        JSON.stringify({
-          content: content,
-          users_permissions_user: {
-            id: user,
-          },
-          hashtags: [
-            {
-              id: tags,
+      if (tags === "") {
+        formdata.append(
+          "data",
+          JSON.stringify({
+            content: content,
+            users_permissions_user: {
+              id: user,
             },
-          ],
-        })
-      );
+          })
+        );
+      } else {
+        formdata.append(
+          "data",
+          JSON.stringify({
+            content: content,
+            users_permissions_user: {
+              id: user,
+            },
+            hashtags: [
+              {
+                id: tags,
+              },
+            ],
+          })
+        );
+      }
     } else {
       // Si il y a que du texte
 
@@ -90,6 +102,8 @@ export default function createPost(props) {
     }
   };
 
+  console.log(tags);
+
   return (
     <form onSubmit={handleSubmit} className={css.formCreatePosts}>
       <div>
@@ -116,6 +130,7 @@ export default function createPost(props) {
         />
       </div>
       <TextField
+        require
         id="hashtags"
         select
         label="Ajoutez un hashtag"
