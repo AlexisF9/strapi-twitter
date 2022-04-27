@@ -1,0 +1,67 @@
+@import "../../styles/variables.scss";
+
+.formRegister {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  @include mobile {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  div {
+    width: 400px;
+    margin-bottom: 5px;
+
+    @include mobile {
+      width: 100%;
+
+      &:last-child {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+  button {
+    background-color: $primary;
+    border: 1px solid transparent;
+
+    &:hover {
+      color: $primary;
+      background-color: transparent;
+      border: 1px solid $primary;
+    }
+
+    @include mobile {
+      margin-bottom: 10px;
+    }
+  }
+
+  .linkConnexion {
+    margin-left: 10px;
+    color: $primary;
+
+    @include mobile {
+      margin: 0;
+    }
+  }
+}
+
+.error {
+  display: none;
+  margin-bottom: 15px !important;
+
+  .alertMDP,
+  .erreurPseudo .alertMDP div,
+  .erreurPseudo div {
+    width: auto;
+  }
+}
+
+.errorMDP,
+.errorPSEUDO {
+  display: block;
+}

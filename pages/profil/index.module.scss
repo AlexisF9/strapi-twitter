@@ -1,0 +1,57 @@
+@import "~/styles/variables";
+
+.profil {
+  margin-top: 4rem;
+  display: flex;
+
+  @include tablet {
+    flex-direction: column;
+  }
+
+  div {
+    margin-right: 2rem;
+    width: 100%;
+  }
+}
+
+.descriptionUser {
+  margin-top: 2rem;
+
+  p {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 5px;
+    width: fit-content;
+  }
+}
+
+.buttonModal {
+  background-color: $primary;
+  border: 1px solid $primary;
+
+  &:hover {
+    background-color: transparent;
+    color: $primary;
+  }
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 2rem;
+  border-radius: 7px;
+}
+
+.listPosts {
+  border-left: 1px solid silver;
+  padding-left: 2rem;
+
+  @include tablet {
+    border-left: 0px;
+    padding-left: 0;
+    margin-top: 2rem;
+  }
+}

@@ -1,0 +1,27 @@
+@import "./styles/variables";
+
+.header {
+  padding: 2rem 0 2rem 0;
+  width: 100%;
+  background-color: $primary;
+  color: white;
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h1 {
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    }
+
+    a {
+      color: white;
+      margin: 0 5px 0 5px;
+      cursor: pointer;
+    }
+  }
+}

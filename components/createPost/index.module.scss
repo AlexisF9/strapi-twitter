@@ -1,0 +1,21 @@
+@import "../../styles/variables.scss";
+
+.formCreatePosts {
+  margin-top: 1rem;
+
+  div {
+    width: 300px;
+    margin-bottom: 5px;
+  }
+
+  button {
+    background-color: $primary;
+    border: 1px solid transparent;
+
+    &:hover {
+      border: 1px solid $primary;
+      color: $primary;
+      background-color: transparent;
+    }
+  }
+}

@@ -1,0 +1,52 @@
+@import "~/styles/variables";
+
+.cards {
+  border-radius: 7px;
+  position: relative;
+  max-width: 400px;
+}
+
+.cardPost {
+  margin-bottom: 1rem;
+  box-shadow: none !important;
+  border-radius: 7px;
+  box-shadow: 0 0 5px rgb(179, 179, 179) !important;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+
+  .deletePostBtn {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    transition: font-size 0.3s;
+
+    &:hover {
+      font-size: 30px;
+    }
+  }
+
+  a {
+    color: $primary;
+  }
+
+  @include mobile {
+    max-width: 100% !important;
+
+    img {
+      height: 250px;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 0 5px rgb(87, 87, 87) !important;
+  }
+}
+
+.listHashtags {
+  display: flex;
+  flex-wrap: wrap;
+
+  p {
+    margin-right: 5px;
+  }
+}
