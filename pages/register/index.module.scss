@@ -7,6 +7,10 @@
   transform: translate(-50%, -50%);
 
   @include mobile {
+    position: initial;
+    top: inherit;
+    left: inherit;
+    transform: inherit;
     width: 100%;
     padding: 1rem;
   }
@@ -17,11 +21,6 @@
 
     @include mobile {
       width: 100%;
-
-      &:last-child {
-        display: flex;
-        flex-direction: column;
-      }
     }
   }
 
@@ -54,14 +53,20 @@
   display: none;
   margin-bottom: 15px !important;
 
-  .alertMDP,
-  .erreurPseudo .alertMDP div,
+  .alertMDP div,
   .erreurPseudo div {
-    width: auto;
+    width: auto !important;
   }
 }
 
 .errorMDP,
 .errorPSEUDO {
   display: block;
+}
+
+@include mobile {
+  .inscriptionBtn {
+    display: flex;
+    flex-direction: column;
+  }
 }

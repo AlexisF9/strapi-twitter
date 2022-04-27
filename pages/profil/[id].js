@@ -22,6 +22,8 @@ export default function Profil({ userInfos, userPosts }) {
     setDateInscription(maDate.toLocaleDateString("fr"));
   }, []);
 
+  console.log(userInfos.description);
+
   return (
     <div className={css.profil}>
       <div>
@@ -32,7 +34,7 @@ export default function Profil({ userInfos, userPosts }) {
         )}
         <div className={css.descriptionUser}>
           <h3>Description :</h3>
-          {userInfos.description === null ? (
+          {userInfos.description === undefined ? (
             <p>Aucune description</p>
           ) : (
             <p>{userInfos.description}</p>

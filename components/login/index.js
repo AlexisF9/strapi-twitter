@@ -44,8 +44,7 @@ export default function Login(props) {
       setPassword("");
       window.location.href = "/";
     } catch (e) {
-      //error.current.classList.add(css.alertError);
-      window.alert("Email ou mot de passe incorrect");
+      error.current.classList.add(css.alertError);
     }
   };
 
@@ -82,7 +81,7 @@ export default function Login(props) {
           Email ou mot de passe incorrect
         </Alert>
       </div>
-      <div>
+      <div className={css.connexionBtn}>
         <Button variant="contained" type="submit">
           Se connecter
         </Button>

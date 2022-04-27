@@ -7,11 +7,6 @@
 
     @include mobile {
       width: 100%;
-
-      &:last-child {
-        display: flex;
-        flex-direction: column;
-      }
     }
   }
 
@@ -51,5 +46,12 @@
 
   .alertError {
     display: block;
+  }
+}
+
+.connexionBtn {
+  @include mobile {
+    display: flex;
+    flex-direction: column;
   }
 }

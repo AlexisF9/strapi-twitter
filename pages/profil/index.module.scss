@@ -4,6 +4,10 @@
   margin-top: 4rem;
   display: flex;
 
+  h2 {
+    font-size: 20px;
+  }
+
   @include tablet {
     flex-direction: column;
   }
@@ -36,13 +40,20 @@
 }
 
 .modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   background-color: white;
   padding: 2rem;
   border-radius: 7px;
+
+  @include desktop {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @include mobile {
+    margin: 1rem;
+  }
 }
 
 .listPosts {

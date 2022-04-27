@@ -124,7 +124,7 @@ export default function Register() {
             Les mots de passes doivent être identique
           </Alert>
         </div>
-        <div>
+        <div className={css.inscriptionBtn}>
           <Button variant="contained" type="submit">
             S'inscrire
           </Button>
