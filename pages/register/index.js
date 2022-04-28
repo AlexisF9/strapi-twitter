@@ -37,7 +37,7 @@ export default function Register() {
     if (password === verifPassword) {
       try {
         const rep = await fetch(
-          `${process.env.NEXT_PUBLIC_URL_API}/api/auth/local/register`,
+          `http://localhost:1337/api/auth/local/register`,
           requestOptions
         );
 

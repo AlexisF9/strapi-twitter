@@ -38,7 +38,7 @@ export default function Home({ hashtag }) {
     setPosts(
       await (
         await fetch(
-          `${process.env.NEXT_PUBLIC_URL_API}/api/posts?sort[0]=id%3Adesc&populate=*`
+          `http://localhost:1337/api/posts?sort[0]=id%3Adesc&populate=*`
         )
       ).json()
     );
@@ -48,9 +48,7 @@ export default function Home({ hashtag }) {
 
   async function getMorePosts() {
     const res = await fetch(
-      `${
-        process.env.NEXT_PUBLIC_URL_API
-      }/api/posts?sort[0]=id%3Adesc&pagination[page]=${
+      `${"http://localhost:1337_URL_API"}/api/posts?sort[0]=id%3Adesc&pagination[page]=${
         posts.meta.pagination.page + 1
       }&populate=*`
     );
@@ -133,9 +131,7 @@ export default function Home({ hashtag }) {
 }
 
 export async function getStaticProps() {
-  const hash = await fetch(
-    `${process.env.NEXT_PUBLIC_URL_API}/api/hashtags?populate=*`
-  );
+  const hash = await fetch(`http://localhost:1337/api/hashtags?populate=*`);
   const hashtag = await hash.json();
 
   return {

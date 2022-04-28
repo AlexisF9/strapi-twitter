@@ -26,7 +26,7 @@ export default function singlePost({ post }) {
     setSinglePost(
       await (
         await fetch(
-          `${process.env.NEXT_PUBLIC_URL_API}/api/posts/${post.data.id}?populate=*`
+          `http://localhost:1337/api/posts/${post.data.id}?populate=*`
         )
       ).json()
     );
@@ -56,7 +56,7 @@ export default function singlePost({ post }) {
           {post.data.attributes.image.data && (
             <img
               src={
-                process.env.NEXT_PUBLIC_URL_API +
+                "http://localhost:1337" +
                 post.data.attributes.image.data.attributes.formats.small.url
               }
             />

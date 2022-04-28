@@ -43,7 +43,7 @@ export default function UpdateUser(props) {
 
     try {
       const rep = await fetch(
-        `${process.env.NEXT_PUBLIC_URL_API}/api/users/${user}`,
+        `http://localhost:1337/api/users/${user}`,
         requestOptions
       );
       const response = await rep.json();

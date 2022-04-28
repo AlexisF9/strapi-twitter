@@ -26,12 +26,12 @@ export default function Hashtags({ hashtag, hashtagInfos }) {
 
 export async function getStaticProps({ params }) {
   const hashInfos = await fetch(
-    `${process.env.NEXT_PUBLIC_URL_API}/api/hashtags/${params.id}?populate=*`
+    `http://localhost:1337/api/hashtags/${params.id}?populate=*`
   );
   const hashtagInfos = await hashInfos.json();
 
   const hash = await fetch(
-    `${process.env.NEXT_PUBLIC_URL_API}/api/posts?sort[0]=id%3Adesc&filters[hashtags][id][$eq]=${params.id}&populate=*`
+    `http://localhost:1337/api/posts?sort[0]=id%3Adesc&filters[hashtags][id][$eq]=${params.id}&populate=*`
   );
   const hashtag = await hash.json();
 

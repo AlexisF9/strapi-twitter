@@ -31,7 +31,7 @@ export default function Login(props) {
 
     try {
       const rep = await fetch(
-        `${process.env.NEXT_PUBLIC_URL_API}/api/auth/local`,
+        `http://localhost:1337/api/auth/local`,
         requestOptions
       );
 

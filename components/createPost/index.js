@@ -91,7 +91,7 @@ export default function createPost(props) {
 
     try {
       const rep = await fetch(
-        `${process.env.NEXT_PUBLIC_URL_API}/api/posts?populate=*`,
+        `http://localhost:1337/api/posts?populate=*`,
         requestOptions
       );
       const response = await rep.json();

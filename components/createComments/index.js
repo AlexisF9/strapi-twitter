@@ -43,7 +43,7 @@ export default function CreateComments(props) {
 
     try {
       const rep = await fetch(
-        `${process.env.NEXT_PUBLIC_URL_API}/api/comments`,
+        `http://localhost:1337/api/comments`,
         requestOptions
       );
       const response = await rep.json();

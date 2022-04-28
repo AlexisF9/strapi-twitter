@@ -23,7 +23,7 @@ export default function comment(props) {
 
   async function syncComments() {
     const com = await fetch(
-      `${process.env.NEXT_PUBLIC_URL_API}/api/comments/${props.data.id}?populate=*`
+      `http://localhost:1337/api/comments/${props.data.id}?populate=*`
     );
     const rep = await com.json();
 

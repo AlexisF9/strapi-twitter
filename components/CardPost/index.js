@@ -36,7 +36,7 @@ export default function CardPost({ post }) {
         window.confirm("Êtes-vous sur de vouloir supprimer cette publication ?")
       ) {
         const rep = await fetch(
-          `${process.env.NEXT_PUBLIC_URL_API}/api/posts/${post.id}`,
+          `http://localhost:1337/api/posts/${post.id}`,
           requestOptions
         );
         const response = await rep.json();
@@ -84,7 +84,7 @@ export default function CardPost({ post }) {
                   component="img"
                   height="200"
                   image={
-                    process.env.NEXT_PUBLIC_URL_API +
+                    "http://localhost:1337" +
                     post.attributes.image.data.attributes.formats.small.url
                   }
                   alt={post.attributes.title}

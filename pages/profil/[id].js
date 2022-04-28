@@ -75,12 +75,12 @@ export default function Profil({ userInfos, userPosts }) {
 
 export async function getStaticProps({ params }) {
   const user = await fetch(
-    `${process.env.NEXT_PUBLIC_URL_API}/api/users/${params.id}?populate=*`
+    `http://localhost:1337/api/users/${params.id}?populate=*`
   );
   const userInfos = await user.json();
 
   const userPost = await fetch(
-    `${process.env.NEXT_PUBLIC_URL_API}/api/posts?sort[0]=id%3Adesc&filters[users_permissions_user][id][$eq]=${params.id}&populate=*`
+    `http://localhost:1337/api/posts?sort[0]=id%3Adesc&filters[users_permissions_user][id][$eq]=${params.id}&populate=*`
   );
   const userPosts = await userPost.json();
 
