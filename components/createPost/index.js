@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { createRef, useEffect, useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
+import Cookies from "js-cookie";
 
 export default function createPost(props) {
   const [content, setContent] = useState("");
@@ -15,8 +16,8 @@ export default function createPost(props) {
   //let file = null;
 
   useEffect(() => {
-    setUser(window.localStorage.getItem("idUser"));
-    setUserToken(window.localStorage.getItem("authToken"));
+    setUser(Cookies.get("idUser"));
+    setUserToken(Cookies.get("authToken"));
   }, [content]);
 
   const onFileChange = () => {
@@ -30,7 +31,7 @@ export default function createPost(props) {
     let formdata;
 
     myHeaders.append("Authorization", "Bearer " + userToken); // on envoi le token pour prouver que la personne est authentifié
-    //console.log(_image.current);
+
     // Si il y a une image
     if (file) {
       formdata = new FormData();

@@ -6,6 +6,7 @@ import { CardContent, Link } from "@mui/material";
 import CardHeader from "@mui/material/CardHeader";
 import { useEffect, useState } from "react";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import Cookies from "js-cookie";
 
 export default function CardPost({ post }) {
   const [date, setDate] = useState();
@@ -13,8 +14,8 @@ export default function CardPost({ post }) {
   const [userToken, setUserToken] = useState();
 
   useEffect(() => {
-    setUser(window.localStorage.getItem("username"));
-    setUserToken(window.localStorage.getItem("authToken"));
+    setUser(Cookies.get("username"));
+    setUserToken(Cookies.get("authToken"));
 
     const maDate = new Date(post.attributes.publishedAt);
     setDate("Publié le " + maDate.toLocaleString("fr"));

@@ -7,6 +7,7 @@ import Login from "../components/login";
 import postsAPI from "../services/postsAPI";
 import CircularProgress from "@mui/material/CircularProgress";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Cookies from "js-cookie";
 
 export default function Home({ hashtag }) {
   const [user, setUser] = useState();
@@ -15,15 +16,18 @@ export default function Home({ hashtag }) {
   const [isLoading, setIsLoading] = useState(true);
 
   function logout() {
-    localStorage.clear();
+    Cookies.remove("authToken");
+    Cookies.remove("username");
+    Cookies.remove("idUser");
+    //localStorage.clear();
     window.location.href = "/";
   }
 
   useEffect(() => {
     fetchAllPosts(); // appel de la fonction au chargement de la page
 
-    setUser(window.localStorage.getItem("username"));
-    setUserID(window.localStorage.getItem("idUser"));
+    setUser(Cookies.get("username"));
+    setUserID(Cookies.get("idUser"));
   }, []);
 
   // FETCH ALL POSTS AU CHERGEMENT DE LA PAGE
@@ -48,7 +52,7 @@ export default function Home({ hashtag }) {
 
   async function getMorePosts() {
     const res = await fetch(
-      `${"http://localhost:1337_URL_API"}/api/posts?sort[0]=id%3Adesc&pagination[page]=${
+      `http://localhost:1337_URL_API/api/posts?sort[0]=id%3Adesc&pagination[page]=${
         posts.meta.pagination.page + 1
       }&populate=*`
     );

@@ -7,6 +7,7 @@ import PostsAPI from "../../services/postsAPI";
 import CreateComments from "../../components/createComments";
 import Comment from "../../components/comment";
 import { Link } from "@mui/material";
+import Cookies from "js-cookie";
 
 export default function singlePost({ post }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -19,7 +20,7 @@ export default function singlePost({ post }) {
     const maDate = new Date(post.data.attributes.publishedAt);
     setDate("Publié le " + maDate.toLocaleDateString("fr"));
 
-    setUser(window.localStorage.getItem("username"));
+    setUser(Cookies.get("username"));
   });
 
   async function syncComments() {

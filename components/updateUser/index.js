@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import { createRef, useEffect, useState } from "react";
 import css from "./index.module.scss";
 import Alert from "@mui/material/Alert";
+import Cookies from "js-cookie";
 
 export default function UpdateUser(props) {
   const [user, setUser] = useState("");
@@ -17,8 +18,8 @@ export default function UpdateUser(props) {
   const erreurEmail = createRef();
 
   useEffect(() => {
-    setUser(window.localStorage.getItem("idUser"));
-    setUserToken(window.localStorage.getItem("authToken"));
+    setUser(Cookies.get("idUser"));
+    setUserToken(Cookies.get("authToken"));
   }, [username, email, description]);
 
   const handleSubmit = async (event) => {
@@ -54,7 +55,7 @@ export default function UpdateUser(props) {
           erreurEmail.current.classList.add(css.errorActive);
         }
       } else {
-        window.localStorage.setItem("username", username);
+        Cookies.set("username", username, { expires: 5 });
         window.location.href = "/profil/" + user;
       }
     } catch (e) {

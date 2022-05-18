@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import { createRef, useState } from "react";
 import { Link } from "@mui/material";
 import Alert from "@mui/material/Alert";
+import Cookies from "js-cookie";
 
 export default function Login(props) {
   const [identifier, setIdentifier] = useState("");
@@ -36,10 +37,9 @@ export default function Login(props) {
       );
 
       const response = await rep.json();
-
-      window.localStorage.setItem("authToken", response.jwt);
-      window.localStorage.setItem("username", response.user.username);
-      window.localStorage.setItem("idUser", response.user.id);
+      Cookies.set("authToken", response.jwt, { expires: 5 });
+      Cookies.set("username", response.user.username, { expires: 5 });
+      Cookies.set("idUser", response.user.id, { expires: 5 });
       setIdentifier("");
       setPassword("");
       window.location.href = "/";

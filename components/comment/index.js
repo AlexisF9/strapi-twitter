@@ -18,7 +18,7 @@ export default function comment(props) {
 
   useEffect(() => {
     syncComments();
-    setUser(window.localStorage.getItem("username"));
+    setUser(Cookies.get("username"));
   }, []);
 
   async function syncComments() {

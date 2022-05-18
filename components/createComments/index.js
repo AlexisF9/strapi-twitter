@@ -2,6 +2,7 @@ import css from "./index.module.scss";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 export default function CreateComments(props) {
   const [user, setUser] = useState("");
@@ -9,8 +10,8 @@ export default function CreateComments(props) {
   const [userToken, setUserToken] = useState();
 
   useEffect(() => {
-    setUser(window.localStorage.getItem("idUser"));
-    setUserToken(window.localStorage.getItem("authToken"));
+    setUser(Cookies.get("idUser"));
+    setUserToken(Cookies.get("authToken"));
   }, [content]);
 
   const handleSubmit = async (e) => {

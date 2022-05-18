@@ -6,6 +6,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import Cookies from "js-cookie";
 
 export default function Profil({ userInfos, userPosts }) {
   const [user, setUser] = useState();
@@ -16,8 +17,7 @@ export default function Profil({ userInfos, userPosts }) {
   const handleClose = () => setOpen(false);
 
   useEffect(() => {
-    setUser(window.localStorage.getItem("username"));
-
+    setUser(Cookies.get("username"));
     const maDate = new Date(userInfos.createdAt);
     setDateInscription(maDate.toLocaleDateString("fr"));
   }, []);
@@ -32,7 +32,7 @@ export default function Profil({ userInfos, userPosts }) {
         )}
         <div className={css.descriptionUser}>
           <h3>Description :</h3>
-          {userInfos.description === undefined ? (
+          {userInfos.description === null ? (
             <p>Aucune description</p>
           ) : (
             <p>{userInfos.description}</p>

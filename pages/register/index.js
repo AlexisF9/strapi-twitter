@@ -43,9 +43,10 @@ export default function Register() {
 
         const response = await rep.json();
 
-        window.localStorage.setItem("authToken", response.jwt);
-        window.localStorage.setItem("username", response.user.username);
-        window.localStorage.setItem("idUser", response.user.id);
+        Cookies.set("authToken", response.jwt, { expires: 5 });
+        Cookies.set("username", response.user.username, { expires: 5 });
+        Cookies.set("idUser", response.user.id, { expires: 5 });
+
         setUsername("");
         setEmail("");
         setPassword("");

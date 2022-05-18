@@ -1,9 +1,4 @@
 import css from "./index.module.scss";
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { CardContent, Link } from "@mui/material";
-import CardHeader from "@mui/material/CardHeader";
 import CardPost from "../../components/CardPost";
 
 export default function Hashtags({ hashtag, hashtagInfos }) {
